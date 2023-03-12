@@ -10,7 +10,7 @@
 #include <string.h> /* memset */
 #include <signal.h> /* signals */
 
-#include "../lib/include/scheduler.h"
+#include "scheduler.h"
 #include "semaphores.h"
 #include "WatchDog.h"
 

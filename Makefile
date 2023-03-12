@@ -20,7 +20,7 @@ OBJ_RELE = obj/release
 
 
 .PHONY: all
-all: debug release
+all: debug release test runtest
 
 .PHONY: debug
 debug:
@@ -47,6 +47,10 @@ release:
 .PHONY: test
 test: debug
 	$(CC) $(CFLAGS) $(LDFLAGS) $(IFLAG) test/$(TARGET)_test.c -o $(TARGET)_test.out -l$(TARGET) $(patsubst %.o,-l%,$(DEP))
+
+.PHONY: runtest
+runtest:
+	./$(TARGET)_test.out
 
 .PHONY: clean
 clean:
