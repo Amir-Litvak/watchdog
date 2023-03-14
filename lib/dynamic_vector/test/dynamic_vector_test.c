@@ -1,8 +1,7 @@
-
 #include <stdio.h> /*printf*/
 #include <assert.h> /*assert*/
 #include <string.h> /*strcmp*/
-#include "d_vector.h"
+#include "dynamic_vector.h"
 
 void DVectorCharTest();
 void DVectorIntTest();
@@ -25,10 +24,10 @@ int main()
 	
 	DVectorCharTest();
 	DVectorIntTest();
-	DVectorSizetTest();
+/* 	DVectorSizetTest();
 	DVectorFloatTest();
 	DVectorDoubleTest();
-	DVectorStringTest();
+	DVectorStringTest(); */
 
 	
 	

@@ -1,12 +1,7 @@
-/**************************************************************************
- Author: Karen Starkman
- Date: 25/05/2022
- Reviewed By: Revital Yedidi
-**************************************************************************/
 #include<stdio.h>                                   /* printf            */
 #include<assert.h>                                  /* assert            */
 
-#include "Heap_PQ.h"                                /* my implementation */
+#include "priority_queue.h"                                /* my implementation */
 
 #define RUNTEST(test) {\
             if (!test)\

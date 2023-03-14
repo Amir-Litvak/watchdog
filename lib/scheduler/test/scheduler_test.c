@@ -2,7 +2,7 @@
 #include <time.h>
 #include <unistd.h> /* sleep */
 
-#include "sched.h"
+#include "scheduler.h"
 
 #define RUNTEST(test) {\
         if (!test)\

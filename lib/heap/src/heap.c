@@ -1,10 +1,3 @@
-/*****************************************************************************
-*Name: Amir Litvak													 			 
-*Reviewer: Tom 											 			 
-*Date: 05/21/22													 			 
-*heap.c														 			 
-******************************************************************************/
-
 #include <assert.h> /* for assert */
 #include <stdlib.h> /* malloc + free */
 #include <stdio.h> /* testing purposes, will be removed after CR approve */
@@ -13,7 +6,7 @@
 #include "heap.h"
 
 #define LAST_INDEX (HeapSize(heap) - 1)
-#define HEAP_SIZE (60)
+#define HEAP_INITIAL_SIZE (60)
 #define HEAP_ROOT (0)
 
 static void HeapifyUp(heap_t *heap, int current_index);
@@ -32,7 +25,6 @@ enum status
 	SUCCESS = 0,
 	FAIL
 };
-
 
 struct heap
 {
@@ -53,7 +45,7 @@ heap_t *HeapCreate(heap_cmp_func_t cmp, void *cmp_param)
 		return NULL;
 	}
 	
-	new_heap->heap = DVectorCreate(sizeof(size_t), 60);
+	new_heap->heap = DVectorCreate(sizeof(size_t), HEAP_INITIAL_SIZE);
 	if(NULL == new_heap->heap)
 	{
 		free(new_heap);

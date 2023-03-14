@@ -1,4 +1,5 @@
 #include <stdio.h> /* for printf */
+
 #include "uid.h"
 
 #define RUNTEST(test) {\
