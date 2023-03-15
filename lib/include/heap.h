@@ -31,17 +31,19 @@ Operations on Heap:
 /*******************************************************************************
                                  Typedefs
 *******************************************************************************/
-typedef int (*heap_cmp_func_t)(const void *new_data, const void *current_data, void *cmp_param);
+
 /*
 return 0 if equal
 returns > 1 if new_data > current_data
 returns < 1 if new_data < current_data
 */
+typedef int (*heap_cmp_func_t)(const void *new_data, const void *current_data, void *cmp_param);
 
-typedef int (*is_match_t)(const void *data, const void *heap_data, void *param);
 /*
 bool return: 1 if match, 0 if not a match
 */
+typedef int (*is_match_t)(const void *data, const void *heap_data, void *param);
+
 typedef struct heap heap_t;
 
 /*******************************************************************************

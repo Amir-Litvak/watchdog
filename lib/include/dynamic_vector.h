@@ -131,7 +131,7 @@ Return value:
 	- returns pointer to the requested element.
 Complexity: O(1) time, 
 Notes: if asked to access an index greater than the number of existing elements,
-	   will return NULL.
+	   undefined behaviour occurs.
 *******************************************************************************/
 void *DVectorGetElement(const d_vector_t *vector, size_t index);
 

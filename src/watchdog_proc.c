@@ -2,7 +2,7 @@
 
 #include "WatchDog.h"
 
-int main(int argc, char *argv[])
+int main(char *argv[])
 {
     return StartWD(argv);
 }
