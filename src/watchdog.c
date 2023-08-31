@@ -1,6 +1,5 @@
 #define _POSIX_C_SOURCE (200112L)
 #include <assert.h> /* assert */
-#include <stdio.h> /* print testing purposes, will be deleted afterwards. */
 #include <pthread.h> /* threads */
 #include <unistd.h>    /* fork and execpv */
 #include <sys/wait.h>  /* waitpid */
@@ -80,11 +79,7 @@ int StartWD(char *argv[])
 
 void StopWD(void)
 {
-    printf("\n\nSTARTING StopWD\n\n");
-    
-    /*kill(getpid(), SIGUSR2); - IS THE OTHER BETTER?*/
     kill(atoi(getenv(ENV_NAME)), SIGUSR2);
-    /*unsetenv(ENV_NAME);*/
 }
 
 static int SetUpDogs(void *pack)
@@ -166,7 +161,6 @@ static void *WDWatcher(void *arg)
         }
     }
 
-    printf("\n\n STARTING SCHED RUN at pid:%d\n\n", getpid());
     SchedRun(dw_sched);
 
 	SchedDestroy(dw_sched);
@@ -178,18 +172,15 @@ static void *WDWatcher(void *arg)
 
 static int SignalTask(void *param)
 {
-    printf("signal task: g_stop_flag is (1 on ,0 off): %d at pid: %d\n", g_stop_flag, getpid());
     
     ++g_counter;
     kill(g_opposite_pid, SIGUSR1);
-    printf("#######SIG1SENT to:|%d|###\n", g_opposite_pid);
 
 	return T_INTERVAL;
 }
 
 static int RebootTask(void *param)
 {
-    printf("check task: g_counter is: %d at pid: %d\n", g_counter, getpid());
 
 	if(10 < g_counter)
     {
@@ -205,11 +196,8 @@ static int StopTask(void *param)
 {
     sched_t *sched = (sched_t *)param;
 
-    printf("stop task: g_stop_flag is (1 on ,0 off): %d at pid: %d\n", g_stop_flag, getpid());
-
     if(ON == g_stop_flag)
     {
-        printf("\n\n SENDING SIGUSR2 TO: %d\n\n", g_opposite_pid);
         kill(g_opposite_pid, SIGUSR2);
         SchedStop(sched);
         return SUCCESS;
